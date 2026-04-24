@@ -5,6 +5,7 @@ import { ShoppingBag, Heart, Sparkles } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useEffect, useState } from "react";
 import { getLoginUrl } from "@/const";
+import { getStatusBadge } from "@/lib/statusBadge";
 
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
@@ -133,6 +134,19 @@ export default function Home() {
                         alt={product.name}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                       />
+                      {product.status && (
+                        <div className="absolute top-3 right-3">
+                          {(() => {
+                            const badge = getStatusBadge(product.status);
+                            return (
+                              <div className={`${badge.bgColor} ${badge.textColor} px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1`}>
+                                <span>{badge.icon}</span>
+                                <span>{badge.label}</span>
+                              </div>
+                            );
+                          })()}
+                        </div>
+                      )}
                     </div>
                   )}
                   <div className="p-6">

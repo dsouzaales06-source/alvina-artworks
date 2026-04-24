@@ -5,6 +5,7 @@ import { ShoppingBag, Heart, ChevronDown } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useState, useEffect } from "react";
 import { getLoginUrl } from "@/const";
+import { getStatusBadge } from "@/lib/statusBadge";
 
 export default function Catalog() {
   const { user, isAuthenticated } = useAuth();
@@ -146,8 +147,7 @@ export default function Catalog() {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredProducts.map((product) => (
-                  <Link key={product.id} href={`/product/${product.slug}`}>
-                    <a className="card-elegant overflow-hidden hover:shadow-2xl transition-shadow cursor-pointer group h-full flex flex-col">
+                  <a key={product.id} href={`/product/${product.slug}`} className="card-elegant overflow-hidden hover:shadow-2xl transition-shadow cursor-pointer group h-full flex flex-col">
                       {product.imageUrl && (
                         <div className="relative h-64 bg-muted overflow-hidden">
                           <img
@@ -155,9 +155,17 @@ export default function Catalog() {
                             alt={product.name}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                           />
-                          {product.stock > 0 && (
-                            <div className="absolute top-4 right-4 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm font-semibold">
-                              In Stock
+                          {product.status && (
+                            <div className="absolute top-3 right-3">
+                              {(() => {
+                                const badge = getStatusBadge(product.status);
+                                return (
+                                  <div className={`${badge.bgColor} ${badge.textColor} px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1`}>
+                                    <span>{badge.icon}</span>
+                                    <span>{badge.label}</span>
+                                  </div>
+                                );
+                              })()}
                             </div>
                           )}
                         </div>
@@ -179,7 +187,6 @@ export default function Catalog() {
                         </div>
                       </div>
                     </a>
-                  </Link>
                 ))}
               </div>
             )}

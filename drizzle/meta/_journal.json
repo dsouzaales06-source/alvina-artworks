@@ -15,6 +15,13 @@
       "when": 1777033548501,
       "tag": "0001_colorful_talkback",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1777034768219,
+      "tag": "0002_dazzling_peter_quill",
+      "breakpoints": true
     }
   ]
 }

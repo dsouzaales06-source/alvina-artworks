@@ -63,6 +63,7 @@ export const products = mysqlTable("products", {
   imageKey: varchar("imageKey", { length: 255 }),
   sku: varchar("sku", { length: 100 }).unique(),
   stock: int("stock").default(0).notNull(),
+  status: mysqlEnum("status", ["available", "out_of_stock", "limited_time_deal", "coming_soon"]).default("available").notNull(),
   isActive: boolean("isActive").default(true).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),

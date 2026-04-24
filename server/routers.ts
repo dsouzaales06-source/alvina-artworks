@@ -76,6 +76,7 @@ export const appRouter = router({
         categoryId: z.number(),
         sku: z.string().optional(),
         stock: z.number().default(0),
+        status: z.enum(["available", "out_of_stock", "limited_time_deal", "coming_soon"]).default("available"),
         imageBase64: z.string().optional(),
         imageName: z.string().optional(),
       }))
@@ -106,6 +107,7 @@ export const appRouter = router({
           categoryId: input.categoryId,
           sku: input.sku,
           stock: input.stock,
+          status: input.status,
           imageUrl,
           imageKey,
           isActive: true,
@@ -123,6 +125,7 @@ export const appRouter = router({
         categoryId: z.number().optional(),
         sku: z.string().optional(),
         stock: z.number().optional(),
+        status: z.enum(["available", "out_of_stock", "limited_time_deal", "coming_soon"]).optional(),
         imageBase64: z.string().optional(),
         imageName: z.string().optional(),
       }))
@@ -135,6 +138,7 @@ export const appRouter = router({
         if (input.categoryId) updateData.categoryId = input.categoryId;
         if (input.sku) updateData.sku = input.sku;
         if (input.stock !== undefined) updateData.stock = input.stock;
+        if (input.status) updateData.status = input.status;
 
         if (input.imageBase64 && input.imageName) {
           try {

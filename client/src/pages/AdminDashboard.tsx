@@ -16,6 +16,7 @@ const productSchema = z.object({
   categoryId: z.number().min(1, "Category is required"),
   sku: z.string().optional(),
   stock: z.number().default(0),
+  status: z.enum(["available", "out_of_stock", "limited_time_deal", "coming_soon"]).default("available"),
 });
 
 type ProductFormData = z.infer<typeof productSchema>;
@@ -369,6 +370,21 @@ export default function AdminDashboard() {
                         className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
                         placeholder="0"
                       />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-semibold mb-2">
+                        Product Status
+                      </label>
+                      <select
+                        {...register("status")}
+                        className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                      >
+                        <option value="available">Available</option>
+                        <option value="out_of_stock">Out of Stock</option>
+                        <option value="limited_time_deal">Limited Time Deal</option>
+                        <option value="coming_soon">Coming Soon</option>
+                      </select>
                     </div>
                   </div>
 
