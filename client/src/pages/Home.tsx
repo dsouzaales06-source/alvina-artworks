@@ -30,24 +30,18 @@ export default function Home() {
           </Link>
           
           <div className="flex items-center gap-6">
-            <Link href="/catalog">
-              <a className="text-foreground hover:text-secondary transition-colors font-medium">
-                Shop
-              </a>
-            </Link>
+            <a href="/catalog" className="text-foreground hover:text-secondary transition-colors font-medium">
+              Shop
+            </a>
             {isAuthenticated ? (
               <>
-                <Link href="/account">
-                  <a className="text-foreground hover:text-secondary transition-colors font-medium">
-                    Account
-                  </a>
-                </Link>
-                <Link href="/cart">
-                  <a className="flex items-center gap-2 text-foreground hover:text-secondary transition-colors font-medium">
-                    <ShoppingBag size={20} />
-                    Cart
-                  </a>
-                </Link>
+                <a href="/account" className="text-foreground hover:text-secondary transition-colors font-medium">
+                  Account
+                </a>
+                <a href="/cart" className="flex items-center gap-2 text-foreground hover:text-secondary transition-colors font-medium">
+                  <ShoppingBag size={20} />
+                  Cart
+                </a>
               </>
             ) : (
               <a href={getLoginUrl()} className="btn-primary">
@@ -78,11 +72,9 @@ export default function Home() {
               Discover exquisite handmade candles, wedding decorations, and Catholic church adornments crafted with passion and precision. Each piece tells a story of dedication and artistry.
             </p>
             <div className="flex gap-4">
-              <Link href="/catalog">
-                <a className="btn-secondary">
-                  Explore Collections
-                </a>
-              </Link>
+              <a href="/catalog" className="btn-secondary">
+                Explore Collections
+              </a>
               {!isAuthenticated && (
                 <a href={getLoginUrl()} className="btn-outline">
                   Create Account
@@ -105,18 +97,16 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {categories?.map((category) => (
-              <Link key={category.id} href={`/catalog?category=${category.slug}`}>
-                <a className="card-elegant p-8 text-center hover:scale-105 transition-transform cursor-pointer">
-                  <div className="w-16 h-16 bg-gradient-to-br from-accent to-orange-400 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Heart size={32} className="text-white" />
-                  </div>
-                  <h3 className="mb-3">{category.name}</h3>
-                  <p className="text-muted-foreground mb-4">
-                    {category.description || "Discover our exquisite selection"}
-                  </p>
-                  <span className="text-secondary font-semibold">Browse Collection →</span>
-                </a>
-              </Link>
+              <a key={category.id} href={`/catalog?category=${category.slug}`} className="card-elegant p-8 text-center hover:scale-105 transition-transform cursor-pointer">
+                <div className="w-16 h-16 bg-gradient-to-br from-accent to-orange-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Heart size={32} className="text-white" />
+                </div>
+                <h3 className="mb-3">{category.name}</h3>
+                <p className="text-muted-foreground mb-4">
+                  {category.description || "Discover our exquisite selection"}
+                </p>
+                <span className="text-secondary font-semibold">Browse Collection →</span>
+              </a>
             ))}
           </div>
         </div>
@@ -135,42 +125,38 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {featuredProducts.map((product) => (
-                <Link key={product.id} href={`/product/${product.slug}`}>
-                  <a className="card-elegant overflow-hidden hover:shadow-2xl transition-shadow cursor-pointer group">
-                    {product.imageUrl && (
-                      <div className="relative h-64 bg-muted overflow-hidden">
-                        <img
-                          src={product.imageUrl}
-                          alt={product.name}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                      </div>
-                    )}
-                    <div className="p-6">
-                      <h4 className="mb-2 line-clamp-2">{product.name}</h4>
-                      <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                        {product.description}
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-2xl font-bold text-secondary">
-                          ${parseFloat(product.price).toFixed(2)}
-                        </span>
-                        <span className="text-sm text-muted-foreground">
-                          View Details →
-                        </span>
-                      </div>
+                <a key={product.id} href={`/product/${product.slug}`} className="card-elegant overflow-hidden hover:shadow-2xl transition-shadow cursor-pointer group">
+                  {product.imageUrl && (
+                    <div className="relative h-64 bg-muted overflow-hidden">
+                      <img
+                        src={product.imageUrl}
+                        alt={product.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
                     </div>
-                  </a>
-                </Link>
+                  )}
+                  <div className="p-6">
+                    <h4 className="mb-2 line-clamp-2">{product.name}</h4>
+                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                      {product.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-2xl font-bold text-secondary">
+                        ${parseFloat(product.price).toFixed(2)}
+                      </span>
+                      <span className="text-sm text-muted-foreground">
+                        View Details →
+                      </span>
+                    </div>
+                  </div>
+                </a>
               ))}
             </div>
 
             <div className="text-center mt-12">
-              <Link href="/catalog">
-                <a className="btn-primary">
-                  View All Products
-                </a>
-              </Link>
+              <a href="/catalog" className="btn-primary">
+                View All Products
+              </a>
             </div>
           </div>
         </section>
@@ -214,11 +200,9 @@ export default function Home() {
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-95">
             Explore our complete collection and find the perfect pieces for your special moments.
           </p>
-          <Link href="/catalog">
-            <a className="btn-secondary">
-              Start Shopping
-            </a>
-          </Link>
+          <a href="/catalog" className="btn-secondary">
+            Start Shopping
+          </a>
         </div>
       </section>
 
@@ -237,11 +221,9 @@ export default function Home() {
               <ul className="space-y-2 text-sm">
                 {categories?.map((cat) => (
                   <li key={cat.id}>
-                    <Link href={`/catalog?category=${cat.slug}`}>
-                      <a className="text-muted-foreground hover:text-secondary transition-colors">
-                        {cat.name}
-                      </a>
-                    </Link>
+                    <a href={`/catalog?category=${cat.slug}`} className="text-muted-foreground hover:text-secondary transition-colors">
+                      {cat.name}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -250,19 +232,15 @@ export default function Home() {
               <h4 className="font-bold mb-4">Customer</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link href="/catalog">
-                    <a className="text-muted-foreground hover:text-secondary transition-colors">
-                      Shop
-                    </a>
-                  </Link>
+                  <a href="/catalog" className="text-muted-foreground hover:text-secondary transition-colors">
+                    Shop
+                  </a>
                 </li>
                 {isAuthenticated && (
                   <li>
-                    <Link href="/account">
-                      <a className="text-muted-foreground hover:text-secondary transition-colors">
-                        My Account
-                      </a>
-                    </Link>
+                    <a href="/account" className="text-muted-foreground hover:text-secondary transition-colors">
+                      My Account
+                    </a>
                   </li>
                 )}
               </ul>

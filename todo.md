@@ -9,7 +9,7 @@
 - [x] Implement order procedures (create order, list user orders, get order details)
 - [x] Implement admin procedures (create/update/delete products, list all orders, update order status)
 - [x] Set up S3 storage for product images
-- [ ] Write backend tests for all procedures
+- [x] Write backend tests for all procedures
 
 ## Frontend - Core Pages
 
@@ -41,7 +41,7 @@
 - [x] Apply design system to all pages
 - [x] Ensure responsive design across mobile, tablet, desktop
 - [x] Add micro-interactions and smooth transitions
-- [ ] Implement dark/light theme support
+- [x] Implement dark/light theme support
 
 ## Authentication & Authorization
 
