@@ -99,11 +99,14 @@ export const appRouter = router({
           }
         }
 
+        // Parse price: remove any non-numeric characters except decimal point
+        const parsedPrice = input.price.replace(/[^0-9.]/g, '');
+        
         const result = await db.createProduct({
           name: input.name,
           slug: input.slug,
           description: input.description,
-          price: input.price,
+          price: parsedPrice,
           categoryId: input.categoryId,
           sku: input.sku,
           stock: input.stock,
@@ -134,7 +137,10 @@ export const appRouter = router({
         if (input.name) updateData.name = input.name;
         if (input.slug) updateData.slug = input.slug;
         if (input.description !== undefined) updateData.description = input.description;
-        if (input.price) updateData.price = input.price;
+        if (input.price) {
+          // Parse price: remove any non-numeric characters except decimal point
+          updateData.price = input.price.replace(/[^0-9.]/g, '');
+        }
         if (input.categoryId) updateData.categoryId = input.categoryId;
         if (input.sku) updateData.sku = input.sku;
         if (input.stock !== undefined) updateData.stock = input.stock;

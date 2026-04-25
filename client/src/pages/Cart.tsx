@@ -144,7 +144,7 @@ export default function Cart() {
                           <img
                             src={item.product.imageUrl}
                             alt={item.product.name}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                           />
                         </div>
                       )}

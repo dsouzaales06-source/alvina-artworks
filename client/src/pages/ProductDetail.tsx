@@ -144,7 +144,7 @@ export default function ProductDetail() {
                 <img
                   src={product.imageUrl}
                   alt={product.name}
-                  className="w-full h-96 object-cover"
+                  className="w-full h-96 object-contain bg-muted rounded-lg"
                 />
               </div>
             )}

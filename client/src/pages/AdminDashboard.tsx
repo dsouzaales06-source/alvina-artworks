@@ -415,7 +415,7 @@ export default function AdminDashboard() {
                         <img
                           src={imagePreview}
                           alt="Preview"
-                          className="max-w-xs h-48 object-cover rounded-lg"
+                          className="max-w-xs h-48 object-contain rounded-lg bg-muted"
                         />
                       </div>
                     )}
